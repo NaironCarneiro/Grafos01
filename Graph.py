@@ -12,10 +12,11 @@ def print_graph():
         print("")
 
 def add_arestas():
-    print("Me diga quais posições quer adicionar")
-    l = int(input("linha:"))
-    c = int(input("coluna:"))
+    print("Me diga entre quais vertices quer adicionar uma aresta")
+    l = int(input("vertice :"))
+    c = int(input("vertice :"))
     graph[l - 1][c - 1] = 1
+    graph[c - 1][l - 1] = 1
     print_graph()
     print("Aresta adicionada com sucesso!!")
 
@@ -25,6 +26,8 @@ def grau_graph(dec):
     for i in range(vertice):
         for j in range(vertice):
             if graph[i][j] == 1:
+                if i == j:
+                    cont = cont + 1
                 cont = cont + 1
         if dec:
             print("a vertice ", i + 1, "é de grau", cont)
