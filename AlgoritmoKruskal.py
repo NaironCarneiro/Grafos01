@@ -3,14 +3,14 @@ import heapq
 n = 6           #numero de vertices
 m = 8           #numero de arestas
 
-Graph = []
+H = []
 
 for i in range(m):
     vertice1,vertice2,custo1To2 = input().split()           #ler aresta de vertice1 até vertice2 e seu  custo custo1To2
     vertice1 = int(vertice1)
     vertice2 = int(vertice2)
     custo1To2 = int(custo1To2)
-    heapq.heappush(Graph,(custo1To2,vertice1,vertice2))     #coloca aresta no heap
+    heapq.heappush(H,(custo1To2,vertice1,vertice2))     #coloca aresta no heap
 
 Conjunto = [[] * n for i in range(n)]                      #criar conjuntos
 
@@ -25,7 +25,7 @@ cont = 0
 custo = 0
 
 while cont < n-1:                                           #basta n-1 arestas
-    custo1To2, vertice1, vertice2 = heapq.heappop(Graph)    #remover  a próxima  aresta do heap
+    custo1To2, vertice1, vertice2 = heapq.heappop(H)    #remover  a próxima  aresta do heap
     if Array[vertice1] != Array[vertice2]:                  #as arestas unem arvores diferentes, eu adiciono uma nova aresta
         custo = custo + custo1To2
         p = Array[vertice1]
