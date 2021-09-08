@@ -10,7 +10,7 @@ for i in range(m):
     vertice1 = int(vertice1)
     vertice2 = int(vertice2)
     custo1To2 = int(custo1To2)
-    heapq.heappush(H,(custo1To2,vertice1,vertice2))     #coloca aresta no heap
+    heapq.heappush(H,(custo1To2,vertice1,vertice2))        #coloca aresta no heap
 
 Conjunto = [[] * n for i in range(n)]                      #criar conjuntos
 
@@ -24,8 +24,8 @@ for i in range(n):
 cont = 0
 custo = 0
 
-while cont < n-1:                                           #basta n-1 arestas
-    custo1To2, vertice1, vertice2 = heapq.heappop(H)    #remover  a próxima  aresta do heap
+while cont < n-1:                                           #o while chegar a n-1 arestas
+    custo1To2, vertice1, vertice2 = heapq.heappop(H)        #remover  a próxima  aresta do heap
     if Array[vertice1] != Array[vertice2]:                  #as arestas unem arvores diferentes, eu adiciono uma nova aresta
         custo = custo + custo1To2
         p = Array[vertice1]
@@ -34,12 +34,12 @@ while cont < n-1:                                           #basta n-1 arestas
             p, q = q, p
         for j in Conjunto[q]:
             Array[j] = p
-        Conjunto[p].extend(Conjunto[q])                   #união de conjuntos Conjunto[p] com Conjunto[q]
-        Conjunto[q] = []                                   #esvaziar Conjunto[q]
-        cont = cont + 1
+        Conjunto[p].extend(Conjunto[q])                    #união de conjuntos Conjunto[p] com Conjunto[q]
+        Conjunto[q] = []                                   #esvaziar Conjunto[q] depois que eu fiz a união
+        cont = cont + 1                                    #conta uma aresta a mais na arvore geradora
         print(Conjunto)
-        print(Array)
-print(custo)
+        #print(Array)
+print("Custo total da árvore: ",custo)
 
 '''
 0 1 4
